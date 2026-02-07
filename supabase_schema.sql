@@ -15,7 +15,8 @@ create table expenses (
   amount numeric not null,
   paid_by text not null,
   date text,
-  category text
+  category text,
+  split_with_group boolean default true
 );
 
 -- Create a table for members (optional, but good for persistence)

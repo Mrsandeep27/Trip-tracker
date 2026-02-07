@@ -177,13 +177,21 @@ export default function Dashboard() {
                                 }}>
                                     <Wallet size={18} color="#a1a1aa" />
                                 </div>
-                                <div>
+                                <div onClick={() => navigate(`/trip/${tripId}/edit/${expense.id}`)} style={{ cursor: 'pointer' }}>
                                     <div style={{ fontWeight: '500' }}>{expense.title}</div>
-                                    <div className="text-muted" style={{ fontSize: '0.8rem' }}>{expense.paidBy} • {expense.date}</div>
+                                    <div className="text-muted" style={{ fontSize: '0.8rem' }}>{expense.paidBy} • {expense.date || new Date(expense.created_at).toLocaleDateString()}</div>
                                 </div>
                             </div>
-                            <div style={{ fontWeight: '600', color: expense.paidBy === 'You' ? 'var(--success)' : 'white' }}>
-                                ₹{parseFloat(expense.amount).toFixed(2)}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <div style={{ fontWeight: '600', color: expense.paidBy === 'You' ? 'var(--success)' : 'white' }}>
+                                    ₹{parseFloat(expense.amount).toFixed(2)}
+                                </div>
+                                <button
+                                    onClick={() => navigate(`/trip/${tripId}/edit/${expense.id}`)}
+                                    style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: '0.25rem' }}
+                                >
+                                    <Edit3 size={16} />
+                                </button>
                             </div>
                         </div>
                     ))}

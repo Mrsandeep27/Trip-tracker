@@ -15,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/trip/:tripId" element={<Dashboard />} />
             <Route path="/trip/:tripId/add" element={<AddExpense />} />
+            <Route path="/trip/:tripId/edit/:expenseId" element={<AddExpense />} />
             <Route path="/trip/:tripId/settle" element={<Settlement />} />
           </Routes>
         </div>
